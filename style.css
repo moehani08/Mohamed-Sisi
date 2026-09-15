@@ -1,6 +1,8 @@
 /* ---------------------------------------------------------------
    MH Credit Advisory — mh-business.net
    Type:  Spectral (text), IBM Plex Sans (structure, figures)
+   Light palette: warm ivory page, deeper ivory bands, navy ink,
+   brass accent. Layout and typography unchanged.
    ------------------------------------------------------------ */
 
 :root{
@@ -8,10 +10,11 @@
   --ink-deep:   #0A1926;
   --ink-soft:   #46596B;
   --paper:      #FBFAF7;
-  --tint:       #EFEEE9;
+  --band:       #F2EEE4;
+  --band-soft:  #F7F4ED;
   --rule:       #D6D3CA;
-  --rule-dark:  #2B4257;
-  --brass:      #8E7136;
+  --rule-band:  #DCD4C4;
+  --brass:      #7F6229;
   --brass-lit:  #C9A961;
 
   --serif: "Spectral", Georgia, "Times New Roman", serif;
@@ -41,7 +44,7 @@ img{ max-width:100%; display:block; }
 a{ color:inherit; }
 
 :focus-visible{
-  outline:2px solid var(--brass-lit);
+  outline:2px solid var(--brass);
   outline-offset:3px;
 }
 
@@ -64,9 +67,9 @@ a{ color:inherit; }
    ------------------------------------------------------------ */
 
 .masthead{
-  background:var(--ink-deep);
-  color:var(--paper);
-  border-bottom:1px solid var(--rule-dark);
+  background:var(--paper);
+  color:var(--ink);
+  border-bottom:1px solid var(--rule);
 }
 
 .masthead__inner{
@@ -98,8 +101,8 @@ a{ color:inherit; }
   white-space:nowrap;
   flex:none;
 }
-.monogram b{ font-weight:500; color:var(--paper); }
-.monogram i{ font-weight:500; font-style:normal; color:var(--brass-lit); }
+.monogram b{ font-weight:500; color:var(--ink); }
+.monogram i{ font-weight:500; font-style:normal; color:var(--brass); }
 
 .wordmark__text{ display:flex; flex-direction:column; line-height:1.25; }
 .wordmark__name{ font-size:1.15rem; font-weight:500; }
@@ -107,7 +110,7 @@ a{ color:inherit; }
   font-family:var(--sans);
   font-size:.78rem;
   letter-spacing:.04em;
-  color:#9FB0BF;
+  color:var(--ink-soft);
 }
 
 .nav{
@@ -119,20 +122,20 @@ a{ color:inherit; }
 }
 .nav a{
   text-decoration:none;
-  color:#C6D2DC;
+  color:var(--ink-soft);
   padding-block:.25rem;
   border-bottom:1px solid transparent;
   transition:color .15s ease, border-color .15s ease;
 }
-.nav a:hover{ color:var(--paper); border-bottom-color:var(--brass); }
+.nav a:hover{ color:var(--ink); border-bottom-color:var(--brass); }
 
 /* ---------------------------------------------------------------
    Hero
    ------------------------------------------------------------ */
 
 .hero{
-  background:var(--ink-deep);
-  color:var(--paper);
+  background:var(--paper);
+  color:var(--ink);
   padding-block:5rem 5.5rem;
 }
 
@@ -150,7 +153,7 @@ a{ color:inherit; }
 .portrait img{
   width:100%;
   height:auto;
-  border:1px solid var(--rule-dark);
+  border:1px solid var(--rule);
   filter:saturate(.92) contrast(1.02);
 }
 .portrait figcaption{
@@ -158,8 +161,8 @@ a{ color:inherit; }
   font-family:var(--sans);
   font-size:.82rem;
   line-height:1.45;
-  color:#8FA3B3;
-  border-top:1px solid var(--rule-dark);
+  color:var(--ink-soft);
+  border-top:1px solid var(--rule);
   padding-top:.7rem;
 }
 
@@ -168,7 +171,7 @@ a{ color:inherit; }
   font-family:var(--sans);
   font-size:.86rem;
   letter-spacing:.05em;
-  color:var(--brass-lit);
+  color:var(--brass);
 }
 
 .hero__line{
@@ -185,7 +188,7 @@ a{ color:inherit; }
   max-width:var(--measure);
   font-size:1.1rem;
   line-height:1.72;
-  color:#C9D4DD;
+  color:var(--ink-soft);
 }
 
 .hero__actions{
@@ -202,27 +205,36 @@ a{ color:inherit; }
   font-weight:500;
   text-decoration:none;
   padding:.85rem 1.6rem;
-  background:var(--brass-lit);
-  color:var(--ink-deep);
-  border:1px solid var(--brass-lit);
-  transition:background .15s ease, color .15s ease;
+  background:var(--ink);
+  color:var(--paper);
+  border:1px solid var(--ink);
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
 }
-.btn:hover{ background:#DCC083; border-color:#DCC083; }
+.btn:hover{ background:var(--ink-deep); border-color:var(--ink-deep); }
 
 .btn--quiet{
   background:transparent;
-  color:#C9D4DD;
-  border-color:var(--rule-dark);
+  color:var(--ink);
+  border-color:var(--rule);
 }
-.btn--quiet:hover{ background:transparent; color:var(--paper); border-color:var(--brass); }
+.btn--quiet:hover{ background:transparent; color:var(--brass); border-color:var(--brass); }
 
 /* ---------------------------------------------------------------
    Sections
    ------------------------------------------------------------ */
 
 .section{ padding-block:5rem; }
-.section--tint{ background:var(--tint); }
-.section--dark{ background:var(--ink); color:var(--paper); }
+
+.section--tint{
+  background:var(--band-soft);
+  border-block:1px solid var(--rule-band);
+}
+
+.section--dark{
+  background:var(--band);
+  color:var(--ink);
+  border-block:1px solid var(--rule-band);
+}
 
 .section__head{
   margin:0 0 2.2rem;
@@ -235,8 +247,8 @@ a{ color:inherit; }
   color:var(--ink-soft);
 }
 .section__head--light{
-  border-bottom-color:var(--rule-dark);
-  color:var(--brass-lit);
+  border-bottom-color:var(--rule-band);
+  color:var(--brass);
 }
 
 .lede{
@@ -287,23 +299,23 @@ a{ color:inherit; }
 }
 
 .figures li{
-  border-top:1px solid var(--rule-dark);
+  border-top:2px solid var(--brass);
   padding-top:1.1rem;
 }
 
 .figures__value{
   display:block;
   font-family:var(--sans);
-  font-size:2.2rem;
+  font-size:2.6rem;
   font-weight:400;
   line-height:1.1;
-  color:var(--brass-lit);
-  letter-spacing:-.01em;
+  color:var(--ink);
+  letter-spacing:-.012em;
 }
 .figures__unit{
   font-size:1.05rem;
   margin-left:.22em;
-  color:#9FB0BF;
+  color:var(--brass);
 }
 
 .figures__label{
@@ -311,7 +323,7 @@ a{ color:inherit; }
   margin-top:.65rem;
   font-size:.99rem;
   line-height:1.5;
-  color:#BFCBD5;
+  color:var(--ink-soft);
 }
 
 .notes{
@@ -321,7 +333,7 @@ a{ color:inherit; }
 }
 .notes p{
   margin:0 0 1.1rem;
-  color:#C9D4DD;
+  color:var(--ink-soft);
 }
 .notes p:last-child{ margin-bottom:0; }
 
@@ -417,7 +429,7 @@ a{ color:inherit; }
 }
 .plain li{
   padding-block:.4rem;
-  border-bottom:1px solid rgba(0,0,0,.07);
+  border-bottom:1px solid rgba(15,36,54,.09);
 }
 .plain li:last-child{ border-bottom:0; }
 
@@ -431,7 +443,7 @@ a{ color:inherit; }
   font-size:1.18rem;
   font-weight:300;
   line-height:1.6;
-  color:#C9D4DD;
+  color:var(--ink-soft);
 }
 
 .contact__list{
@@ -444,33 +456,33 @@ a{ color:inherit; }
   grid-template-columns:8rem 1fr;
   gap:1rem;
   padding-block:1rem;
-  border-top:1px solid var(--rule-dark);
+  border-top:1px solid var(--rule-band);
   align-items:baseline;
 }
-.contact__list li:last-child{ border-bottom:1px solid var(--rule-dark); }
+.contact__list li:last-child{ border-bottom:1px solid var(--rule-band); }
 
 .contact__key{
   font-family:var(--sans);
   font-size:.85rem;
   letter-spacing:.03em;
-  color:#8FA3B3;
+  color:var(--ink-soft);
 }
 .contact__list a{
-  color:var(--brass-lit);
+  color:var(--brass);
   text-decoration:none;
-  border-bottom:1px solid rgba(201,169,97,.35);
+  border-bottom:1px solid rgba(142,113,54,.4);
   overflow-wrap:anywhere;
 }
-.contact__list a:hover{ border-bottom-color:var(--brass-lit); }
+.contact__list a:hover{ border-bottom-color:var(--brass); }
 
 /* ---------------------------------------------------------------
    Footer
    ------------------------------------------------------------ */
 
 .foot{
-  background:var(--ink-deep);
-  color:#8FA3B3;
-  border-top:1px solid var(--rule-dark);
+  background:var(--band);
+  color:var(--ink-soft);
+  border-top:1px solid var(--rule-band);
   font-family:var(--sans);
   font-size:.85rem;
 }
@@ -482,8 +494,8 @@ a{ color:inherit; }
   padding-block:1.8rem;
 }
 .foot p{ margin:0; }
-.foot a{ color:#8FA3B3; text-decoration:none; }
-.foot a:hover{ color:var(--brass-lit); }
+.foot a{ color:var(--ink-soft); text-decoration:none; }
+.foot a:hover{ color:var(--brass); }
 
 /* ---------------------------------------------------------------
    Narrow screens
