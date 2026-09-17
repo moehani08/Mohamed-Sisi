@@ -15,4 +15,24 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://mh-business.net/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mh-business.net/"/>
   </url>
+  <url>
+    <loc>https://mh-business.net/insights/</loc>
+    <lastmod>2026-09-17</lastmod>
+  </url>
+  <url>
+    <loc>https://mh-business.net/insights/why-sme-loan-applications-fail/</loc>
+    <lastmod>2026-09-17</lastmod>
+  </url>
+  <url>
+    <loc>https://mh-business.net/insights/documents-a-bank-needs/</loc>
+    <lastmod>2026-09-17</lastmod>
+  </url>
+  <url>
+    <loc>https://mh-business.net/insights/how-banks-read-cash-flow/</loc>
+    <lastmod>2026-09-17</lastmod>
+  </url>
+  <url>
+    <loc>https://mh-business.net/insights/after-a-bank-declines/</loc>
+    <lastmod>2026-09-17</lastmod>
+  </url>
 </urlset>
