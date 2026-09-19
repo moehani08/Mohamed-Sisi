@@ -139,6 +139,21 @@
   ]
 }
 </script>
+<style>
+.card-panel{
+  display:flex; gap:1.5rem; align-items:center;
+  background:var(--paper); color:var(--ink);
+  border:1px solid var(--brass);
+  padding:1.3rem 1.5rem; margin-top:2.25rem; max-width:33rem;
+}
+.card-panel__qr{ width:132px; height:132px; flex:none; display:block; }
+.card-panel__title{ font-family:var(--sans); font-weight:600; font-size:.95rem; margin:0 0 .4rem; }
+.card-panel__body{ margin:0; font-size:1rem; line-height:1.6; color:var(--ink-soft); }
+.card-panel a{ color:var(--brass); }
+@media (max-width:34rem){
+  .card-panel{ flex-direction:column; align-items:flex-start; gap:1.1rem; }
+}
+</style>
 </head>
 <body>
 
@@ -184,6 +199,7 @@
             Message me on WhatsApp
           </a>
           <a class="btn btn--quiet" href="#how">See how it works</a>
+          <a class="btn btn--quiet" href="/card">Digital card</a>
         </div>
       </div>
       <figure class="portrait">
@@ -497,6 +513,13 @@
         <li><span class="contact__key">LinkedIn</span><a href="https://www.linkedin.com/in/mohamed-hani-919a4951" target="_blank" rel="noopener">mohamed-hani-919a4951</a></li>
         <li><span class="contact__key">Meetings</span><span>Online or at your premises, anywhere in Egypt</span></li>
       </ul>
+      <div class="card-panel">
+        <img class="card-panel__qr" src="/card/qr.png" width="132" height="132" alt="QR code for mh-business.net/card">
+        <div>
+          <p class="card-panel__title">Digital business card</p>
+          <p class="card-panel__body">Scan it to save my details straight to your phone, or open it at <a href="/card">mh-business.net/card</a>.</p>
+        </div>
+      </div>
     </div>
   </section>
 

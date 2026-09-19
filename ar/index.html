@@ -41,6 +41,21 @@
   "author": { "@id": "https://mh-business.net/#mohamed-hani" }
 }
 </script>
+<style>
+.card-panel{
+  display:flex; gap:1.5rem; align-items:center;
+  background:var(--paper); color:var(--ink);
+  border:1px solid var(--brass);
+  padding:1.3rem 1.5rem; margin-top:2.25rem; max-width:33rem;
+}
+.card-panel__qr{ width:132px; height:132px; flex:none; display:block; }
+.card-panel__title{ font-family:var(--sans); font-weight:600; font-size:.95rem; margin:0 0 .4rem; }
+.card-panel__body{ margin:0; font-size:1rem; line-height:1.6; color:var(--ink-soft); }
+.card-panel a{ color:var(--brass); }
+@media (max-width:34rem){
+  .card-panel{ flex-direction:column; align-items:flex-start; gap:1.1rem; }
+}
+</style>
 </head>
 <body>
 
@@ -85,6 +100,7 @@
             راسلني على واتساب
           </a>
           <a class="btn btn--quiet" href="#how">تعرّف على خطوات العمل</a>
+          <a class="btn btn--quiet" href="/card/?lang=ar">بطاقة التعريف الرقمية</a>
         </div>
       </div>
       <figure class="portrait">
@@ -397,6 +413,13 @@
         <li><span class="contact__key">لينكدإن</span><a href="https://www.linkedin.com/in/mohamed-hani-919a4951" target="_blank" rel="noopener" dir="ltr">mohamed-hani-919a4951</a></li>
         <li><span class="contact__key">الاجتماعات</span><span>عبر الإنترنت أو في مقر شركتك، في أي مكان في مصر</span></li>
       </ul>
+      <div class="card-panel">
+        <img class="card-panel__qr" src="/card/qr-ar.png" width="132" height="132" alt="رمز الاستجابة السريعة لبطاقة التعريف الرقمية">
+        <div>
+          <p class="card-panel__title">بطاقة التعريف الرقمية</p>
+          <p class="card-panel__body">امسح الرمز لحفظ بياناتي مباشرة على هاتفك، أو افتحها على <a href="/card/?lang=ar" dir="ltr">mh-business.net/card</a>.</p>
+        </div>
+      </div>
     </div>
   </section>
 
