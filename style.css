@@ -89,20 +89,13 @@ a{ color:inherit; }
 }
 
 .monogram{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:block;
   width:2.9rem; height:2.9rem;
-  border:1px solid var(--brass);
-  font-family:var(--serif);
-  font-size:1.2rem;
-  line-height:1;
-  letter-spacing:.01em;
-  white-space:nowrap;
+  border:0;
+  background:url("/mh-logo.svg") center / contain no-repeat;
   flex:none;
 }
-.monogram b{ font-weight:500; color:var(--ink); }
-.monogram i{ font-weight:500; font-style:normal; color:var(--brass); }
+.monogram b, .monogram i{ display:none; }
 
 .wordmark__text{ display:flex; flex-direction:column; line-height:1.25; }
 .wordmark__name{ font-size:1.15rem; font-weight:500; }
