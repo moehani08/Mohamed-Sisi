@@ -102,11 +102,40 @@
             </article>
           </li>
         -->
+        <li>
+          <article class="project">
+            <div class="project__meta">
+              <span class="project__where">01&nbsp;Talent Academy</span>
+              <span>October 2026</span>
+              <span>Peer-audited</span>
+            </div>
+            <div>
+              <h3 class="project__title">go-reloaded</h3>
+              <p class="project__body">
+                A command-line text editor written in Go. It reads a text file, follows editing
+                instructions written inside the text, such as <code>(up, 2)</code>,
+                <code>(hex)</code> or <code>(cap)</code>, fixes punctuation spacing, quotes and
+                "a" versus "an", then writes the clean text to a new file.
+              </p>
+              <p class="project__body">
+                Each rule lives in its own small function, and unit tests cover the official
+                examples, the audit cases and edge cases such as a missing file or a malformed
+                instruction, which get a clear error message instead of a crash.
+              </p>
+              <div class="project__example" aria-label="Example">
+                <p><span>In</span><code>Simply add 42 (hex) and 10 (bin) and you will see the result is 68.</code></p>
+                <p><span>Out</span><code>Simply add 66 and 2 and you will see the result is 68.</code></p>
+              </div>
+              <ul class="project__stack" aria-label="Built with">
+                <li>Go</li><li>Standard library</li><li>Unit tests</li><li>Git</li>
+              </ul>
+            </div>
+          </article>
+        </li>
       </ul>
 
       <p class="projects__empty">
-        Projects from the 01&nbsp;Talent Academy program are being written up and will be listed
-        here, newest first.
+        More projects from the 01&nbsp;Talent Academy program will be added here as I complete them.
       </p>
     </div>
   </section>
