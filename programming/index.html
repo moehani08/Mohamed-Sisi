@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mohamed Hani | Programming Projects, 01 Talent Academy</title>
-<meta name="description" content="Software projects by Mohamed Hani from the full stack development program at 01 Talent Academy, Cairo, and work built outside it. Go, Java, Python and C++.">
+<title>Mohamed Hani | Full Stack Developer in Training, Projects</title>
+<meta name="description" content="Programming portfolio of Mohamed Hani, full stack developer in training at 01 Talent Academy, Cairo. Go projects with full write-ups, skills and background in SME and corporate credit.">
 <meta name="author" content="Mohamed Hani">
 <link rel="canonical" href="https://mh-business.net/programming/">
 <link rel="alternate" hreflang="en" href="https://mh-business.net/programming/">
@@ -50,7 +50,8 @@
     </a>
     <nav class="nav" aria-label="On this page">
       <a href="#projects">Projects</a>
-      <a href="#program">The program</a>
+      <a href="#skills">Skills</a>
+      <a href="#background">Background</a>
       <a href="#contact">Contact</a>
       <a class="lang" href="/ar/programming/" hreflang="ar" lang="ar">عربي</a>
     </nav>
@@ -61,43 +62,50 @@
 
   <section class="hero">
     <div class="wrap">
-      <div style="max-width:44rem">
-        <p class="hero__place">Full stack development, 01&nbsp;Talent Academy, Cairo</p>
-        <h1 class="hero__line">Building software with a credit analyst's eye.</h1>
+      <div class="cv-intro">
+        <p class="hero__place">Programming</p>
+        <h1 class="hero__line">Full stack developer in training, with sixteen years in credit.</h1>
         <p class="hero__body">
-          I spent sixteen years in SME and corporate credit, building scoring models, cash flow
-          projections and credit files. Since 2025 I have been studying full stack development
-          at 01&nbsp;Talent Academy, a two-year program that runs until 2027. This page collects the
-          projects I have built there and outside it.
+          I am studying full stack development at 01&nbsp;Talent Academy in Cairo, a two-year,
+          project-based program, and building my projects in Go. My background in SME and
+          corporate credit shapes how I write software: explicit rules, tested edge cases and
+          clear errors instead of silent failures.
         </p>
         <div class="hero__actions">
-          <a class="btn" href="#projects">See the projects</a>
+          <a class="btn" href="#projects">View projects</a>
+          <a class="btn btn--quiet" href="/mohamed-hani-cv.pdf" download>Download CV (PDF)</a>
           <a class="btn btn--quiet" href="mailto:mohamed.hani@mh-business.net">Email me</a>
-          <a class="btn btn--quiet" href="https://www.linkedin.com/in/mohamed-hani-credit" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
+      <dl class="facts">
+        <div><dt>Program</dt><dd>Full Stack Development, 01&nbsp;Talent Academy</dd></div>
+        <div><dt>Period</dt><dd>2025 to 2027, in progress</dd></div>
+        <div><dt>Main language</dt><dd>Go</dd></div>
+        <div><dt>Location</dt><dd>New Cairo, Egypt</dd></div>
+      </dl>
     </div>
   </section>
 
   <section class="section section--tint" id="projects">
     <div class="wrap">
       <h2 class="section__head">Projects</h2>
+      <p class="section-intro">Newest first. Each project links to a full write-up covering what it does, how it is built, the design decisions and how it is tested.</p>
 
       <ul class="projects">
         <!--
-          To add a project, copy this block and fill it in. Put the newest project first.
+          To add a project, copy this block, fill it in, and put it first.
           <li>
             <article class="project">
               <div class="project__meta">
                 <span class="project__where">01&nbsp;Talent Academy</span>
-                <span>March 2026</span>
+                <span>Month Year</span>
                 <span>Solo project</span>
               </div>
               <div>
-                <h3 class="project__title">Project name</h3>
-                <p class="project__body">What it does and what you learned, in two or three sentences.</p>
-                <ul class="project__stack" aria-label="Built with"><li>Go</li><li>SQLite</li></ul>
-                <p class="project__links"><a href="https://github.com/...">Source code</a> <a href="https://...">Live demo</a></p>
+                <h3 class="project__title"><a href="/programming/slug/">Project name</a></h3>
+                <p class="project__body">What it does, in two or three sentences.</p>
+                <ul class="project__stack" aria-label="Built with"><li>Go</li></ul>
+                <p class="project__links"><a href="/programming/slug/">Read the full write-up</a></p>
               </div>
             </article>
           </li>
@@ -112,15 +120,11 @@
             <div>
               <h3 class="project__title"><a href="/programming/go-reloaded/">go-reloaded</a></h3>
               <p class="project__body">
-                A command-line text editor written in Go. It reads a text file, follows editing
-                instructions written inside the text, such as <code>(up, 2)</code>,
-                <code>(hex)</code> or <code>(cap)</code>, fixes punctuation spacing, quotes and
-                "a" versus "an", then writes the clean text to a new file.
-              </p>
-              <p class="project__body">
-                Each rule lives in its own small function, and unit tests cover the brief's
-                examples and edge cases such as a missing file or a malformed instruction, which
-                get a clear error message instead of a crash.
+                A command-line text editor in Go. It reads a text file, carries out editing
+                instructions written inside the text, such as <code>(up, 2)</code> or
+                <code>(hex)</code>, fixes punctuation, quotes and "a" versus "an", and writes the
+                clean text to a new file. Each rule is a small, unit-tested function, and bad
+                input gets a clear error message instead of a crash.
               </p>
               <div class="project__example" aria-label="Example">
                 <p><span>In</span><code>Simply add 42 (hex) and 10 (bin) and you will see the result is 68.</code></p>
@@ -136,46 +140,68 @@
       </ul>
 
       <p class="projects__empty">
-        More projects from the 01&nbsp;Talent Academy program will be added here as I complete them.
+        New projects from the 01&nbsp;Talent Academy program are added here as I complete them.
       </p>
     </div>
   </section>
 
-  <section class="section" id="program">
+  <section class="section" id="skills">
     <div class="wrap">
-      <h2 class="section__head">The program</h2>
+      <h2 class="section__head">Skills</h2>
       <div class="cols">
         <div>
-          <h3 class="cols__head">01&nbsp;Talent Academy</h3>
-          <p class="cols__lead">Full Stack Development Program, Cairo</p>
-          <p>A two-year, project-based program with no lectures. Students learn by building
-            projects and reviewing each other's code, working solo and in teams.</p>
+          <h3 class="cols__head">Used in my projects</h3>
+          <ul class="skills" aria-label="Used in my projects">
+            <li>Go</li><li>Go standard library</li><li>Unit testing with go test</li><li>Git</li><li>Command line</li><li>gofmt and go vet</li>
+          </ul>
         </div>
         <div>
-          <h3 class="cols__head">Timeline</h3>
-          <p class="cols__lead">2025 to 2027</p>
-          <p>Currently in the second year, studying alongside my credit advisory practice.</p>
+          <h3 class="cols__head">In training</h3>
+          <ul class="skills skills--quiet" aria-label="In training">
+            <li>Java</li><li>Python</li><li>C++</li>
+          </ul>
         </div>
         <div>
-          <h3 class="cols__head">Languages</h3>
-          <ul class="skills" aria-label="Programming languages">
-            <li>Go</li><li>Java</li><li>Python</li><li>C++</li>
+          <h3 class="cols__head">How I work</h3>
+          <ul class="plain">
+            <li>Small functions with one job each</li>
+            <li>Tests for edge cases, not only the expected input</li>
+            <li>Clear error messages and exit codes</li>
+            <li>Design decisions written down, with the reasons</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--tint" id="why">
+  <section class="section section--tint" id="background">
     <div class="wrap">
-      <h2 class="section__head">Where finance and code meet</h2>
+      <h2 class="section__head">Background</h2>
       <div class="notes">
-        <p>Lenders run on software: scoring models, loan origination systems, cash flow tools
-          and the data pipelines behind credit decisions. Most of the people who build them have
-          never sat in a credit committee.</p>
-        <p>I have, many times. Learning to build that software myself means I can work with
-          credit, risk and data teams in their own language, and turn what I know about how
-          lending decisions are actually made into working tools.</p>
+        <p>Before programming, I spent sixteen years in SME and corporate credit, eleven of them
+          inside banks, leasing companies and non-bank lenders in Egypt, including National Bank
+          of Kuwait, where I designed the SME credit scoring model the bank adopted.</p>
+        <p>Lenders run on software: scoring models, loan origination systems and the data behind
+          credit decisions. I understand how those decisions are actually made, which is useful on
+          any team building financial products.</p>
+      </div>
+      <p class="cols-link"><a href="/cv/">See my full CV</a></p>
+      <div class="cols cols--after">
+        <div>
+          <h3 class="cols__head">01&nbsp;Talent Academy</h3>
+          <p class="cols__lead">Full Stack Development Program, Cairo</p>
+          <p>A two-year, project-based program without lectures. Students learn by building
+            projects, working solo and in teams, and reviewing code with peers.</p>
+        </div>
+        <div>
+          <h3 class="cols__head">Education</h3>
+          <p class="cols__lead">B.S.B.A. in Finance</p>
+          <p>Central Missouri State University, USA, 2005.</p>
+        </div>
+        <div>
+          <h3 class="cols__head">Languages</h3>
+          <p>Arabic, native. English, fluent.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -183,12 +209,13 @@
   <section class="section section--dark" id="contact">
     <div class="wrap">
       <h2 class="section__head section__head--light">Contact</h2>
-      <p class="contact__title">Working on something where finance meets software?</p>
-      <p class="contact__lede">I am glad to hear about projects, collaborations and roles.</p>
+      <p class="contact__title">Hiring for a developer role?</p>
+      <p class="contact__lede">I am glad to talk about projects, internships and roles, especially where software meets finance.</p>
+      <p class="contact__cta"><a class="btn" href="/mohamed-hani-cv.pdf" download>Download CV (PDF)</a></p>
       <ul class="contact__list">
         <li><span class="contact__key">Email</span><a href="mailto:mohamed.hani@mh-business.net">mohamed.hani@mh-business.net</a></li>
         <li><span class="contact__key">LinkedIn</span><a href="https://www.linkedin.com/in/mohamed-hani-credit" target="_blank" rel="noopener">mohamed-hani-credit</a></li>
-        <li><span class="contact__key">CV</span><a href="/cv/">mh-business.net/cv</a></li>
+        <li><span class="contact__key">Phone</span><a href="tel:+201153352953">+20 115 335 2953</a></li>
         <li><span class="contact__key">Location</span><span>New Cairo, Egypt</span></li>
       </ul>
     </div>

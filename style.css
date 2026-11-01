@@ -1373,3 +1373,9 @@ html[dir="rtl"] .checks li{ padding:.7rem 1.6rem .7rem 0; }
 }
 html[dir="rtl"] [dir="ltr"]{ unicode-bidi:isolate; }
 html[dir="rtl"] code[dir="ltr"]{ display:inline-block; }
+
+/* Programming page: recruiter layout */
+.hero .facts{ margin-top:3rem; }
+.skills--quiet li{ border-style:dashed; border-color:var(--rule); color:var(--ink-soft); }
+.cols-link{ margin:1.4rem 0 0; font-family:var(--sans); font-size:.92rem; }
+.cols-link a{ color:var(--brass); text-decoration:none; border-bottom:1px solid currentColor; }
