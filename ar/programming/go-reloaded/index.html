@@ -73,6 +73,7 @@
         <div><dt>مكان التنفيذ</dt><dd>أكاديمية <span lang="en" dir="ltr">01&nbsp;Talent</span></dd></div>
         <div><dt>التاريخ</dt><dd>أكتوبر 2026</dd></div>
         <div><dt>الفريق</dt><dd>مشروع فردي</dd></div>
+        <div><dt>الاختبارات</dt><dd>48 حالة، وسبع دوال اختبار</dd></div>
       </dl>
     </div>
   </section>
@@ -148,18 +149,18 @@
       </ul>
 
       <h3 class="sub">هيكل الشيفرة</h3>
-      <p class="section-intro">دالة صغيرة لكل قاعدة، موزعة على ملفات بحسب المسؤولية.</p>
+      <p class="section-intro">سبعة ملفات بلغة <span lang="en" dir="ltr">Go</span>. كل قاعدة دالة صغيرة، موزعة على ملفات بحسب المسؤولية. وتقتصر الدالة <code dir="ltr">main</code> على استدعاء <code dir="ltr">run(args)</code> التي تُرجع الخطأ بدلًا من إنهاء البرنامج، فتستطيع الاختبارات تشغيل البرنامج كاملًا مباشرة.</p>
       <div class="table-wrap">
         <table class="table table--stack">
-          <thead><tr><th scope="col">الملف</th><th scope="col">المسؤولية</th></tr></thead>
+          <thead><tr><th scope="col">الملف</th><th scope="col">المسؤولية</th><th scope="col">الدوال الرئيسية</th></tr></thead>
           <tbody>
-            <tr><td data-label="الملف"><code dir="ltr">main.go</code></td><td data-label="المسؤولية">نقطة البداية: التحقق من المدخلات، وقراءة ملف الإدخال، وكتابة ملف الإخراج، والإبلاغ عن الأخطاء</td></tr>
-            <tr><td data-label="الملف"><code dir="ltr">process.go</code></td><td data-label="المسؤولية">تقسيم النص إلى أسطر وتشغيل القواعد على كل سطر بالترتيب</td></tr>
-            <tr><td data-label="الملف"><code dir="ltr">modifiers.go</code></td><td data-label="المسؤولية">التعرّف على <code dir="ltr">(hex)</code> و<code dir="ltr">(bin)</code> و<code dir="ltr">(up)</code> و<code dir="ltr">(low)</code> و<code dir="ltr">(cap)</code> وصيغها المرقّمة وتطبيقها</td></tr>
-            <tr><td data-label="الملف"><code dir="ltr">articles.go</code></td><td data-label="المسؤولية">تحويل <code dir="ltr">a</code> إلى <code dir="ltr">an</code></td></tr>
-            <tr><td data-label="الملف"><code dir="ltr">punctuation.go</code></td><td data-label="المسؤولية">إلصاق علامات الترقيم والحفاظ على المجموعات متصلة</td></tr>
-            <tr><td data-label="الملف"><code dir="ltr">quotes.go</code></td><td data-label="المسؤولية">مطابقة علامات الاقتباس وإلصاقها بالكلمات التي بداخلها</td></tr>
-            <tr><td data-label="الملف"><code dir="ltr">main_test.go</code></td><td data-label="المسؤولية">اختبارات الوحدة</td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">main.go</code></td><td data-label="المسؤولية">نقطة البداية: التحقق من المدخلات، وقراءة ملف الإدخال، وكتابة ملف الإخراج، والإبلاغ عن الأخطاء</td><td data-label="الدوال الرئيسية"><code dir="ltr">main</code> <code dir="ltr">run</code></td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">process.go</code></td><td data-label="المسؤولية">تقسيم النص إلى أسطر وتشغيل القواعد على كل سطر بالترتيب</td><td data-label="الدوال الرئيسية"><code dir="ltr">processText</code> <code dir="ltr">processLine</code></td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">modifiers.go</code></td><td data-label="المسؤولية">التعرّف على <code dir="ltr">(hex)</code> و<code dir="ltr">(bin)</code> و<code dir="ltr">(up)</code> و<code dir="ltr">(low)</code> و<code dir="ltr">(cap)</code> وصيغها المرقّمة وتطبيقها</td><td data-label="الدوال الرئيسية"><code dir="ltr">applyModifiers</code> <code dir="ltr">parseModifier</code> <code dir="ltr">changePreviousWords</code> <code dir="ltr">convertToDecimal</code> <code dir="ltr">capitalize</code></td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">articles.go</code></td><td data-label="المسؤولية">تحويل <code dir="ltr">a</code> إلى <code dir="ltr">an</code></td><td data-label="الدوال الرئيسية"><code dir="ltr">fixArticles</code> <code dir="ltr">startsWithVowelOrH</code></td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">punctuation.go</code></td><td data-label="المسؤولية">إلصاق علامات الترقيم والحفاظ على المجموعات متصلة</td><td data-label="الدوال الرئيسية"><code dir="ltr">fixPunctuation</code> <code dir="ltr">splitLeadingPunctuation</code></td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">quotes.go</code></td><td data-label="المسؤولية">مطابقة علامات الاقتباس وإلصاقها بالكلمات التي بداخلها</td><td data-label="الدوال الرئيسية"><code dir="ltr">fixQuotes</code> <code dir="ltr">isQuoteMark</code></td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">main_test.go</code></td><td data-label="المسؤولية">اختبارات الوحدة</td><td data-label="الدوال الرئيسية">سبع دوال اختبار</td></tr>
           </tbody>
         </table>
       </div>
@@ -191,13 +192,25 @@
       <h2 class="section__head">الاختبار ومعالجة الأخطاء</h2>
       <div class="prose">
         <p>
-          تتحقق اختبارات الوحدة في <code dir="ltr">main_test.go</code>، التي تُشغَّل بالأمر
-          <code dir="ltr">go test</code>، من نحو 40 حالة إدخال وإخراج: كل أمثلة وصف المشروع،
-          إضافة إلى حالات استثنائية مثل الملف الفارغ، والمسافات الزائدة، والعدد الأكبر من الكلمات
-          المتاحة، والأرقام غير الصالحة، ومجموعات الترقيم المختلطة مثل <code dir="ltr">?!</code>،
-          وعبارتين مقتبستين في سطر واحد. وتُنسَّق الشيفرة بأداة <code dir="ltr">gofmt</code> وتُفحص
-          بأداة <code dir="ltr">go vet</code>.
+          توجد الاختبارات في <code dir="ltr">main_test.go</code> وتُشغَّل بالأمر <code dir="ltr">go test</code>.
+          والاختبار الرئيسي قائم على جدول: 48 حالة، لكل منها اسم ومُدخل ومُخرج متوقع، تتحقق منها حلقة
+          واحدة. وتغطي كل أمثلة وصف المشروع، إضافة إلى حالات استثنائية ظهرت أثناء الاختبار، مثل الملف
+          الفارغ، والمسافات الزائدة، والعدد الأكبر من الكلمات المتاحة، والأرقام غير الصالحة، ومجموعات
+          الترقيم المختلطة مثل <code dir="ltr">?!</code>، وعبارتين مقتبستين في سطر واحد. وتُنسَّق الشيفرة
+          بأداة <code dir="ltr">gofmt</code> وتُفحص بأداة <code dir="ltr">go vet</code>.
         </p>
+      </div>
+      <div class="table-wrap">
+        <table class="table table--stack">
+          <thead><tr><th scope="col">الاختبار</th><th scope="col">ما الذي يثبته</th></tr></thead>
+          <tbody>
+            <tr><td data-label="الاختبار"><code dir="ltr">TestProcessText</code></td><td data-label="ما الذي يثبته">كل حالات النص الـ48، من المُدخل إلى المُخرج المتوقع</td></tr>
+            <tr><td data-label="الاختبار"><code dir="ltr">TestRunWithFiles</code></td><td data-label="ما الذي يثبته">البرنامج الحقيقي يقرأ الملفات ويكتبها، باستخدام مجلد مؤقت تحذفه لغة <span lang="en" dir="ltr">Go</span> بعد الاختبار</td></tr>
+            <tr><td data-label="الاختبار"><code dir="ltr">TestRunErrors</code></td><td data-label="ما الذي يثبته">حالات الفشل: صفر أو واحد أو ثلاثة مُدخلات، وملف إدخال غير موجود، وملف إخراج تتعذر كتابته</td></tr>
+            <tr><td data-label="الاختبار"><code dir="ltr">TestUsageMessageText</code></td><td data-label="ما الذي يثبته">نص رسالة الاستخدام مطابق تمامًا</td></tr>
+            <tr><td data-label="الاختبار"><code dir="ltr">TestParseModifier</code> <code dir="ltr">TestConvertToDecimal</code> <code dir="ltr">TestCapitalize</code></td><td data-label="ما الذي يثبته">الدوال المساعدة كلٌّ على حدة، فيشير أي فشل مباشرة إلى سببه</td></tr>
+          </tbody>
+        </table>
       </div>
       <h3 class="sub">رسائل خطأ واضحة مع رمز خروج 1</h3>
       <ul class="checks">

@@ -1379,3 +1379,9 @@ html[dir="rtl"] code[dir="ltr"]{ display:inline-block; }
 .skills--quiet li{ border-style:dashed; border-color:var(--rule); color:var(--ink-soft); }
 .cols-link{ margin:1.4rem 0 0; font-family:var(--sans); font-size:.92rem; }
 .cols-link a{ color:var(--brass); text-decoration:none; border-bottom:1px solid currentColor; }
+.table td:first-child code{ white-space:nowrap; overflow-wrap:normal; }
+td[data-label="Key functions"] code, td[data-label="الدوال الرئيسية"] code{ display:inline-block; margin-inline-end:.55em; }
+.prose + .table-wrap{ margin-top:1.8rem; }
+@media (max-width: 46rem){
+  .table--stack td code{ display:inline-block; }
+}

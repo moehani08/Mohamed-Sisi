@@ -85,6 +85,7 @@
         <div><dt>Built at</dt><dd>01&nbsp;Talent Academy</dd></div>
         <div><dt>Date</dt><dd>October 2026</dd></div>
         <div><dt>Team</dt><dd>Solo project</dd></div>
+        <div><dt>Tests</dt><dd>48 cases, 7 test functions</dd></div>
       </dl>
     </div>
   </section>
@@ -160,18 +161,18 @@
       </ul>
 
       <h3 class="sub">Code structure</h3>
-      <p class="section-intro">One small function per rule, grouped into files by responsibility.</p>
+      <p class="section-intro">Seven Go files. Each rule is a small function, grouped into files by responsibility. <code>main</code> only calls <code>run(args)</code>, which returns an error instead of exiting, so the tests can run the whole program directly.</p>
       <div class="table-wrap">
         <table class="table table--stack">
-          <thead><tr><th scope="col">File</th><th scope="col">Responsibility</th></tr></thead>
+          <thead><tr><th scope="col">File</th><th scope="col">Responsibility</th><th scope="col">Key functions</th></tr></thead>
           <tbody>
-            <tr><td data-label="File"><code>main.go</code></td><td data-label="Responsibility">Entry point: checks arguments, reads the input file, writes the output file, reports errors</td></tr>
-            <tr><td data-label="File"><code>process.go</code></td><td data-label="Responsibility">Splits text into lines and runs the rules on each line in order</td></tr>
-            <tr><td data-label="File"><code>modifiers.go</code></td><td data-label="Responsibility">Recognises and applies <code>(hex)</code>, <code>(bin)</code>, <code>(up)</code>, <code>(low)</code>, <code>(cap)</code> and their counted forms</td></tr>
-            <tr><td data-label="File"><code>articles.go</code></td><td data-label="Responsibility">Changes <code>a</code> to <code>an</code></td></tr>
-            <tr><td data-label="File"><code>punctuation.go</code></td><td data-label="Responsibility">Attaches punctuation and keeps groups together</td></tr>
-            <tr><td data-label="File"><code>quotes.go</code></td><td data-label="Responsibility">Pairs quote marks and attaches them to the words inside</td></tr>
-            <tr><td data-label="File"><code>main_test.go</code></td><td data-label="Responsibility">Unit tests</td></tr>
+            <tr><td data-label="File"><code>main.go</code></td><td data-label="Responsibility">Entry point: checks arguments, reads the input file, writes the output file, reports errors</td><td data-label="Key functions"><code>main</code> <code>run</code></td></tr>
+            <tr><td data-label="File"><code>process.go</code></td><td data-label="Responsibility">Splits text into lines and runs the rules on each line in order</td><td data-label="Key functions"><code>processText</code> <code>processLine</code></td></tr>
+            <tr><td data-label="File"><code>modifiers.go</code></td><td data-label="Responsibility">Recognises and applies <code>(hex)</code>, <code>(bin)</code>, <code>(up)</code>, <code>(low)</code>, <code>(cap)</code> and their counted forms</td><td data-label="Key functions"><code>applyModifiers</code> <code>parseModifier</code> <code>changePreviousWords</code> <code>convertToDecimal</code> <code>capitalize</code></td></tr>
+            <tr><td data-label="File"><code>articles.go</code></td><td data-label="Responsibility">Changes <code>a</code> to <code>an</code></td><td data-label="Key functions"><code>fixArticles</code> <code>startsWithVowelOrH</code></td></tr>
+            <tr><td data-label="File"><code>punctuation.go</code></td><td data-label="Responsibility">Attaches punctuation and keeps groups together</td><td data-label="Key functions"><code>fixPunctuation</code> <code>splitLeadingPunctuation</code></td></tr>
+            <tr><td data-label="File"><code>quotes.go</code></td><td data-label="Responsibility">Pairs quote marks and attaches them to the words inside</td><td data-label="Key functions"><code>fixQuotes</code> <code>isQuoteMark</code></td></tr>
+            <tr><td data-label="File"><code>main_test.go</code></td><td data-label="Responsibility">Unit tests</td><td data-label="Key functions">7 test functions</td></tr>
           </tbody>
         </table>
       </div>
@@ -203,12 +204,26 @@
       <h2 class="section__head">Testing and error handling</h2>
       <div class="prose">
         <p>
-          Unit tests in <code>main_test.go</code>, run with <code>go test</code>, check around
-          40 input and output cases: every example from the brief plus edge cases such as an
-          empty file, extra spaces, counts larger than the words available, invalid numbers,
-          mixed punctuation like <code>?!</code>, and two quoted phrases on one line. Code is
-          formatted with <code>gofmt</code> and checked with <code>go vet</code>.
+          The tests live in <code>main_test.go</code> and run with <code>go test</code>. The main
+          test is table-driven: 48 cases, each with a name, an input and the expected output,
+          checked by a single loop. They cover every example from the brief plus edge cases found
+          while testing, such as an empty file, extra spaces, counts larger than the words
+          available, invalid numbers, mixed punctuation like <code>?!</code> and two quoted
+          phrases on one line. Code is formatted with <code>gofmt</code> and checked with
+          <code>go vet</code>.
         </p>
+      </div>
+      <div class="table-wrap">
+        <table class="table table--stack">
+          <thead><tr><th scope="col">Test</th><th scope="col">What it proves</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Test"><code>TestProcessText</code></td><td data-label="What it proves">All 48 text cases, from input to expected output</td></tr>
+            <tr><td data-label="Test"><code>TestRunWithFiles</code></td><td data-label="What it proves">The real program reads and writes files, using a temporary folder that Go removes afterwards</td></tr>
+            <tr><td data-label="Test"><code>TestRunErrors</code></td><td data-label="What it proves">Failure cases: zero, one or three arguments, a missing input file and an output file that cannot be written</td></tr>
+            <tr><td data-label="Test"><code>TestUsageMessageText</code></td><td data-label="What it proves">The usage message is exactly right</td></tr>
+            <tr><td data-label="Test"><code>TestParseModifier</code>, <code>TestConvertToDecimal</code>, <code>TestCapitalize</code></td><td data-label="What it proves">Helper functions on their own, so a failure points straight to the cause</td></tr>
+          </tbody>
+        </table>
       </div>
       <h3 class="sub">Errors are reported clearly, with exit code 1</h3>
       <ul class="checks">
