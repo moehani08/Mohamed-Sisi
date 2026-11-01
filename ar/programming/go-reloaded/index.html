@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>go-reloaded | محمد هاني، البرمجة</title>
+<meta name="description" content="go-reloaded: محرر نصوص بلغة Go يعمل من سطر الأوامر وينفّذ تعليمات التحرير المكتوبة داخل النص. مشروع فردي لمحمد هاني في أكاديمية 01 Talent، أكتوبر 2026.">
+<meta name="author" content="Mohamed Hani">
+<link rel="canonical" href="https://mh-business.net/ar/programming/go-reloaded/">
+<link rel="alternate" hreflang="en" href="https://mh-business.net/programming/go-reloaded/">
+<link rel="alternate" hreflang="ar" href="https://mh-business.net/ar/programming/go-reloaded/">
+<link rel="alternate" hreflang="x-default" href="https://mh-business.net/programming/go-reloaded/">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FBFAF7">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mh-business.net/ar/programming/go-reloaded/">
+<meta property="og:title" content="go-reloaded | محمد هاني">
+<meta property="og:description" content="محرر نصوص بلغة Go يعمل من سطر الأوامر وينفّذ تعليمات التحرير المكتوبة داخل النص.">
+<meta property="og:image" content="https://mh-business.net/mohamed-hani.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&family=Spectral:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="realm-code">
+
+<a class="skip" href="#main">انتقل إلى المحتوى</a>
+
+<nav class="realm" aria-label="أقسام الموقع">
+  <div class="wrap realm__inner">
+    <a class="realm__home" href="/ar/">محمد هاني</a>
+    <ul class="realm__list">
+      <li><a href="/ar/services/">الخدمات المالية</a></li>
+      <li><a href="/ar/programming/" aria-current="page">البرمجة</a></li>
+      <li><a href="/ar/cv/">السيرة الذاتية</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="wordmark" href="/ar/programming/">
+      <span class="monogram" aria-hidden="true"><b>M</b><i>H</i></span>
+      <span class="wordmark__text">
+        <span class="wordmark__name">محمد هاني</span>
+        <span class="wordmark__sub">البرمجة</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="في هذه الصفحة">
+      <a href="#overview">نظرة عامة</a>
+      <a href="#build">طريقة البناء</a>
+      <a href="#testing">الاختبار</a>
+      <a class="lang" href="/programming/go-reloaded/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="case-head">
+    <div class="wrap">
+      <a class="case-back" href="/ar/programming/#projects">كل المشروعات</a>
+      <h1 class="case-title"><span lang="en" dir="ltr">go-reloaded</span></h1>
+      <p class="case-sum">
+        محرر نصوص بلغة <span lang="en" dir="ltr">Go</span> يعمل من سطر الأوامر: يقرأ ملفًا، وينفّذ
+        تعليمات التحرير المكتوبة داخل النص، وينظّم التنسيق، ثم يحفظ النتيجة في ملف جديد.
+      </p>
+      <dl class="facts">
+        <div><dt>النوع</dt><dd>أداة سطر أوامر</dd></div>
+        <div><dt>اللغة</dt><dd><span lang="en" dir="ltr">Go</span>، بالمكتبة القياسية فقط</dd></div>
+        <div><dt>مكان التنفيذ</dt><dd>أكاديمية <span lang="en" dir="ltr">01&nbsp;Talent</span></dd></div>
+        <div><dt>التاريخ</dt><dd>أكتوبر 2026</dd></div>
+        <div><dt>الفريق</dt><dd>مشروع فردي</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="overview">
+    <div class="wrap">
+      <h2 class="section__head">نظرة عامة</h2>
+      <div class="prose">
+        <p>
+          كان المطلوب بناء أداة تصحيح تلقائي صغيرة. يحتوي الملف النصي على ملاحظات للمحرر مكتوبة
+          داخل النص، مثل <code dir="ltr">(up, 2)</code> التي تعني "اكتب الكلمتين السابقتين بأحرف
+          كبيرة"، إلى جانب أخطاء تنسيق شائعة مثل المسافة قبل الفاصلة أو استخدام
+          <span lang="en" dir="ltr">a</span> في موضع <span lang="en" dir="ltr">an</span>. على البرنامج
+          أن ينفّذ كل تعليمة، ويصحّح الأخطاء، ويحذف التعليمات، ويحفظ نصًا نظيفًا.
+        </p>
+        <p>يعمل من الطرفية بملف إدخال وملف إخراج:</p>
+      </div>
+      <div class="project__example" dir="ltr">
+        <p><span>Run</span><code>go run . sample.txt result.txt</code></p>
+      </div>
+
+      <h3 class="sub">مثال</h3>
+      <div class="project__example" aria-label="مثال" dir="ltr">
+        <p><span>In</span><code>it (cap) was the best of times, it was the worst of times (up) , it was the age of wisdom</code></p>
+        <p><span>Out</span><code>It was the best of times, it was the worst of TIMES, it was the age of wisdom</code></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="handles">
+    <div class="wrap">
+      <h2 class="section__head">ما الذي تعالجه الأداة</h2>
+      <div class="table-wrap">
+        <table class="table table--stack">
+          <thead><tr><th scope="col">القاعدة</th><th scope="col">ما يحدث</th><th scope="col">قبل</th><th scope="col">بعد</th></tr></thead>
+          <tbody>
+            <tr><td data-label="القاعدة"><code dir="ltr">(hex)</code> <code dir="ltr">(bin)</code></td><td data-label="ما يحدث">تحويل الكلمة السابقة من النظام الست عشري أو الثنائي إلى العشري</td><td data-label="قبل"><code dir="ltr">1E (hex)</code></td><td data-label="بعد"><code dir="ltr">30</code></td></tr>
+            <tr><td data-label="القاعدة"><code dir="ltr">(up)</code> <code dir="ltr">(low)</code> <code dir="ltr">(cap)</code></td><td data-label="ما يحدث">تحويل الكلمة السابقة إلى أحرف كبيرة أو صغيرة أو بحرف أول كبير</td><td data-label="قبل"><code dir="ltr">go (up)</code></td><td data-label="بعد"><code dir="ltr">GO</code></td></tr>
+            <tr><td data-label="القاعدة"><code dir="ltr">(up, n)</code></td><td data-label="ما يحدث">الشيء نفسه على عدد <span lang="en" dir="ltr">n</span> من الكلمات السابقة</td><td data-label="قبل"><code dir="ltr">so exciting (up, 2)</code></td><td data-label="بعد"><code dir="ltr">SO EXCITING</code></td></tr>
+            <tr><td data-label="القاعدة">علامات الترقيم</td><td data-label="ما يحدث">تلتصق <code dir="ltr">. , ! ? : ;</code> بالكلمة السابقة وتليها مسافة واحدة</td><td data-label="قبل"><code dir="ltr">there ,and</code></td><td data-label="بعد"><code dir="ltr">there, and</code></td></tr>
+            <tr><td data-label="القاعدة">مجموعات الترقيم</td><td data-label="ما يحدث">تبقى <code dir="ltr">...</code> و<code dir="ltr">!?</code> متصلة</td><td data-label="قبل"><code dir="ltr">thinking ... You</code></td><td data-label="بعد"><code dir="ltr">thinking... You</code></td></tr>
+            <tr><td data-label="القاعدة">علامات الاقتباس</td><td data-label="ما يحدث">يحيط زوج العلامات <code dir="ltr">'</code> بالكلمات التي بينهما دون مسافات داخلية</td><td data-label="قبل"><code dir="ltr">' awesome '</code></td><td data-label="بعد"><code dir="ltr">'awesome'</code></td></tr>
+            <tr><td data-label="القاعدة">أداة التنكير</td><td data-label="ما يحدث">تتحول <code dir="ltr">a</code> إلى <code dir="ltr">an</code> قبل حرف علة أو <span lang="en" dir="ltr">h</span></td><td data-label="قبل"><code dir="ltr">a amazing rock</code></td><td data-label="بعد"><code dir="ltr">an amazing rock</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="build">
+    <div class="wrap">
+      <h2 class="section__head">طريقة البناء</h2>
+
+      <h3 class="sub">مراحل المعالجة</h3>
+      <ol class="pipeline">
+        <li>التحقق من المدخلات<small>اسما ملفين بالضبط</small></li>
+        <li>قراءة ملف الإدخال<small><code dir="ltr">os.ReadFile</code></small></li>
+        <li>تقسيم النص إلى أسطر<small>كل سطر يُعالج منفردًا</small></li>
+        <li>تقسيم السطر إلى كلمات<small><code dir="ltr">strings.Fields</code></small></li>
+        <li class="is-rule">تطبيق التعليمات<small><span dir="ltr">hex, bin, up, low, cap</span></small></li>
+        <li class="is-rule">تصحيح أداة التنكير<small><span dir="ltr">a → an</span></small></li>
+        <li class="is-rule">تصحيح الترقيم<small>الإلصاق والتجميع</small></li>
+        <li class="is-rule">تصحيح الاقتباس<small>المطابقة والإلصاق</small></li>
+        <li>الدمج والحفظ<small><code dir="ltr">os.WriteFile</code></small></li>
+      </ol>
+      <p class="pipeline-note">المراحل من 5 إلى 8 هي قواعد التحرير، وتُطبَّق على كل سطر بهذا الترتيب الثابت.</p>
+
+      <h3 class="sub">لماذا تعمل القواعد بهذا الترتيب</h3>
+      <ul class="checks">
+        <li><strong>التعليمات أولًا،</strong> لأنها تحذف الملاحظات وتغيّر الكلمات، ويجب أن ترى بقية القواعد الكلمات النهائية. في <code dir="ltr">a (up) apple</code> لا تعمل قاعدة أداة التنكير إلا بعد أن يصبح النص <code dir="ltr">A apple</code>.</li>
+        <li><strong>أداة التنكير قبل الترقيم،</strong> حتى تطابق القاعدة <code dir="ltr">a</code> نظيفة لا <code dir="ltr">a,</code> بعد إلصاق الترقيم.</li>
+        <li><strong>الترقيم قبل الاقتباس،</strong> فيصبح <code dir="ltr">raincoat . '</code> أولًا <code dir="ltr">raincoat.</code> ثم <code dir="ltr">raincoat.'</code>، وهي النتيجة الصحيحة.</li>
+      </ul>
+
+      <h3 class="sub">هيكل الشيفرة</h3>
+      <p class="section-intro">دالة صغيرة لكل قاعدة، موزعة على ملفات بحسب المسؤولية.</p>
+      <div class="table-wrap">
+        <table class="table table--stack">
+          <thead><tr><th scope="col">الملف</th><th scope="col">المسؤولية</th></tr></thead>
+          <tbody>
+            <tr><td data-label="الملف"><code dir="ltr">main.go</code></td><td data-label="المسؤولية">نقطة البداية: التحقق من المدخلات، وقراءة ملف الإدخال، وكتابة ملف الإخراج، والإبلاغ عن الأخطاء</td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">process.go</code></td><td data-label="المسؤولية">تقسيم النص إلى أسطر وتشغيل القواعد على كل سطر بالترتيب</td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">modifiers.go</code></td><td data-label="المسؤولية">التعرّف على <code dir="ltr">(hex)</code> و<code dir="ltr">(bin)</code> و<code dir="ltr">(up)</code> و<code dir="ltr">(low)</code> و<code dir="ltr">(cap)</code> وصيغها المرقّمة وتطبيقها</td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">articles.go</code></td><td data-label="المسؤولية">تحويل <code dir="ltr">a</code> إلى <code dir="ltr">an</code></td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">punctuation.go</code></td><td data-label="المسؤولية">إلصاق علامات الترقيم والحفاظ على المجموعات متصلة</td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">quotes.go</code></td><td data-label="المسؤولية">مطابقة علامات الاقتباس وإلصاقها بالكلمات التي بداخلها</td></tr>
+            <tr><td data-label="الملف"><code dir="ltr">main_test.go</code></td><td data-label="المسؤولية">اختبارات الوحدة</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="decisions">
+    <div class="wrap">
+      <h2 class="section__head">قرارات التصميم</h2>
+      <p class="section-intro">لم يغطِّ وصف المشروع كل الحالات. وحيث سكت، اخترت سلوكًا لا يُضيّع نص المستخدم أبدًا ويوافق ما يتوقعه القارئ.</p>
+      <div class="table-wrap">
+        <table class="table table--stack">
+          <thead><tr><th scope="col">الحالة</th><th scope="col">السلوك</th><th scope="col">السبب</th></tr></thead>
+          <tbody>
+            <tr><td data-label="الحالة"><code dir="ltr">(up, 5)</code> وقبلها كلمتان فقط</td><td data-label="السلوك">تغيير الكلمتين الموجودتين</td><td data-label="السبب">لا توقف للبرنامج؛ ينفّذ أقصى ما يمكن</td></tr>
+            <tr><td data-label="الحالة"><code dir="ltr">(up, -1)</code> أو <code dir="ltr">(foo)</code></td><td data-label="السلوك">تبقى في النص دون تغيير</td><td data-label="السبب">ليست تعليمة صالحة، فلا يخمّن البرنامج</td></tr>
+            <tr><td data-label="الحالة"><code dir="ltr">zz (hex)</code> وهو رقم غير صالح</td><td data-label="السلوك">حذف التعليمة والإبقاء على الكلمة كما هي</td><td data-label="السبب">لا يُتلف نص المستخدم أبدًا</td></tr>
+            <tr><td data-label="الحالة"><code dir="ltr">hello , world (up, 2)</code></td><td data-label="السلوك"><code dir="ltr">HELLO, WORLD</code></td><td data-label="السبب">الفاصلة المنفردة لا تُحسب كلمة</td></tr>
+            <tr><td data-label="الحالة"><code dir="ltr">don't</code></td><td data-label="السلوك">دون تغيير</td><td data-label="السبب">الفاصلة العليا داخل الكلمة ليست علامة اقتباس</td></tr>
+            <tr><td data-label="الحالة">نص من عدة أسطر</td><td data-label="السلوك">كل سطر يُعالج منفردًا مع الحفاظ على فواصل الأسطر</td><td data-label="السبب">لا ينبغي أن تغيّر تعليمة في سطر كلمات سطر آخر</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="testing">
+    <div class="wrap">
+      <h2 class="section__head">الاختبار ومعالجة الأخطاء</h2>
+      <div class="prose">
+        <p>
+          تتحقق اختبارات الوحدة في <code dir="ltr">main_test.go</code>، التي تُشغَّل بالأمر
+          <code dir="ltr">go test</code>، من نحو 40 حالة إدخال وإخراج: كل أمثلة وصف المشروع،
+          إضافة إلى حالات استثنائية مثل الملف الفارغ، والمسافات الزائدة، والعدد الأكبر من الكلمات
+          المتاحة، والأرقام غير الصالحة، ومجموعات الترقيم المختلطة مثل <code dir="ltr">?!</code>،
+          وعبارتين مقتبستين في سطر واحد. وتُنسَّق الشيفرة بأداة <code dir="ltr">gofmt</code> وتُفحص
+          بأداة <code dir="ltr">go vet</code>.
+        </p>
+      </div>
+      <h3 class="sub">رسائل خطأ واضحة مع رمز خروج 1</h3>
+      <ul class="checks">
+        <li>عدد غير صحيح من المدخلات: تظهر رسالة <code dir="ltr">usage: go run . &lt;input file&gt; &lt;output file&gt;</code></li>
+        <li>ملف الإدخال غير موجود أو تتعذر قراءته: تظهر رسالة <code dir="ltr">cannot read input file</code> مع السبب</li>
+        <li>تتعذر كتابة ملف الإخراج: تظهر رسالة <code dir="ltr">cannot write output file</code> مع السبب</li>
+        <li>الإدخال الفارغ ينتج ملف إخراج فارغًا، وتُعالج نهايات أسطر ويندوز بشكل صحيح</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="notes">
+    <div class="wrap">
+      <h2 class="section__head">ملاحظات</h2>
+      <ul class="checks">
+        <li>يستخدم المكتبة القياسية للغة <span lang="en" dir="ltr">Go</span> فقط: <code dir="ltr">os</code> و<code dir="ltr">strings</code> و<code dir="ltr">strconv</code> و<code dir="ltr">unicode</code> و<code dir="ltr">errors</code> و<code dir="ltr">fmt</code>.</li>
+        <li>إدارة الإصدارات بأداة <span lang="en" dir="ltr">Git</span>، مع حفظ التغييرات عند كل مرحلة عاملة.</li>
+        <li>الشيفرة المصدرية محفوظة على خادم <span lang="en" dir="ltr">Git</span> الخاص بأكاديمية <span lang="en" dir="ltr">01&nbsp;Talent</span>، ويمكن مشاركتها عند الطلب.</li>
+      </ul>
+      <div class="case-next">
+        <a class="btn" href="/ar/programming/#projects">كل المشروعات</a>
+        <a class="btn btn--quiet" href="mailto:mohamed.hani@mh-business.net?subject=go-reloaded">استفسر عن هذا المشروع</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p>محمد هاني، القاهرة</p>
+    <p><a href="mailto:mohamed.hani@mh-business.net" dir="ltr">mohamed.hani@mh-business.net</a></p>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4f0756c437364f05b1e5e710a22f9daf"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

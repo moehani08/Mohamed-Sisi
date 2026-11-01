@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>go-reloaded | Mohamed Hani, Programming</title>
+<meta name="description" content="go-reloaded: a command-line text editor in Go that applies editing instructions written inside the text. Built solo by Mohamed Hani at 01 Talent Academy, October 2026.">
+<meta name="author" content="Mohamed Hani">
+<link rel="canonical" href="https://mh-business.net/programming/go-reloaded/">
+<link rel="alternate" hreflang="en" href="https://mh-business.net/programming/go-reloaded/">
+<link rel="alternate" hreflang="ar" href="https://mh-business.net/ar/programming/go-reloaded/">
+<link rel="alternate" hreflang="x-default" href="https://mh-business.net/programming/go-reloaded/">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FBFAF7">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mh-business.net/programming/go-reloaded/">
+<meta property="og:title" content="go-reloaded | Mohamed Hani">
+<meta property="og:description" content="A command-line text editor in Go that applies editing instructions written inside the text.">
+<meta property="og:image" content="https://mh-business.net/mohamed-hani.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@500&text=%D8%B9%D8%B1%D8%A8%D9%8A&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "go-reloaded",
+  "description": "A command-line text editor in Go that applies editing instructions written inside the text.",
+  "programmingLanguage": "Go",
+  "author": { "@id": "https://mh-business.net/#mohamed-hani" },
+  "dateCreated": "2026-10",
+  "url": "https://mh-business.net/programming/go-reloaded/"
+}
+</script>
+</head>
+<body class="realm-code">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="realm" aria-label="Site sections">
+  <div class="wrap realm__inner">
+    <a class="realm__home" href="/">Mohamed Hani</a>
+    <ul class="realm__list">
+      <li><a href="/services/">Financial services</a></li>
+      <li><a href="/programming/" aria-current="page">Programming</a></li>
+      <li><a href="/cv/">CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="wordmark" href="/programming/">
+      <span class="monogram" aria-hidden="true"><b>M</b><i>H</i></span>
+      <span class="wordmark__text">
+        <span class="wordmark__name">Mohamed Hani</span>
+        <span class="wordmark__sub">Programming</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="On this page">
+      <a href="#overview">Overview</a>
+      <a href="#build">How it's built</a>
+      <a href="#testing">Testing</a>
+      <a class="lang" href="/ar/programming/go-reloaded/" hreflang="ar" lang="ar">عربي</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="case-head">
+    <div class="wrap">
+      <a class="case-back" href="/programming/#projects">All projects</a>
+      <h1 class="case-title">go-reloaded</h1>
+      <p class="case-sum">
+        A command-line text editor in Go that reads a file, applies editing instructions
+        written inside the text, cleans up the formatting, and writes the result to a new file.
+      </p>
+      <dl class="facts">
+        <div><dt>Type</dt><dd>Command-line tool</dd></div>
+        <div><dt>Language</dt><dd>Go, standard library only</dd></div>
+        <div><dt>Built at</dt><dd>01&nbsp;Talent Academy</dd></div>
+        <div><dt>Date</dt><dd>October 2026</dd></div>
+        <div><dt>Team</dt><dd>Solo project</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="overview">
+    <div class="wrap">
+      <h2 class="section__head">Overview</h2>
+      <div class="prose">
+        <p>
+          The task was to build a small auto-correction tool. A text file contains notes to the
+          editor written inline, such as <code>(up, 2)</code> meaning "put the last two words in
+          capitals", along with common formatting mistakes like spaces before commas or "a"
+          where "an" belongs. The program has to carry out every instruction, fix the mistakes,
+          remove the instructions, and save clean text.
+        </p>
+        <p>It runs from the terminal with an input file and an output file:</p>
+      </div>
+      <div class="project__example">
+        <p><span>Run</span><code>go run . sample.txt result.txt</code></p>
+      </div>
+
+      <h3 class="sub">Example</h3>
+      <div class="project__example" aria-label="Example">
+        <p><span>In</span><code>it (cap) was the best of times, it was the worst of times (up) , it was the age of wisdom</code></p>
+        <p><span>Out</span><code>It was the best of times, it was the worst of TIMES, it was the age of wisdom</code></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="handles">
+    <div class="wrap">
+      <h2 class="section__head">What it handles</h2>
+      <div class="table-wrap">
+        <table class="table table--stack">
+          <thead><tr><th scope="col">Rule</th><th scope="col">What happens</th><th scope="col">In</th><th scope="col">Out</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Rule"><code>(hex)</code> <code>(bin)</code></td><td data-label="What happens">The word before is converted from hexadecimal or binary to decimal</td><td data-label="In"><code>1E (hex)</code></td><td data-label="Out"><code>30</code></td></tr>
+            <tr><td data-label="Rule"><code>(up)</code> <code>(low)</code> <code>(cap)</code></td><td data-label="What happens">The word before becomes uppercase, lowercase or capitalised</td><td data-label="In"><code>go (up)</code></td><td data-label="Out"><code>GO</code></td></tr>
+            <tr><td data-label="Rule"><code>(up, n)</code></td><td data-label="What happens">The same, applied to the previous <i>n</i> words</td><td data-label="In"><code>so exciting (up, 2)</code></td><td data-label="Out"><code>SO EXCITING</code></td></tr>
+            <tr><td data-label="Rule">Punctuation</td><td data-label="What happens"><code>. , ! ? : ;</code> attach to the word before, with one space after</td><td data-label="In"><code>there ,and</code></td><td data-label="Out"><code>there, and</code></td></tr>
+            <tr><td data-label="Rule">Punctuation groups</td><td data-label="What happens"><code>...</code> and <code>!?</code> stay together</td><td data-label="In"><code>thinking ... You</code></td><td data-label="Out"><code>thinking... You</code></td></tr>
+            <tr><td data-label="Rule">Quotes</td><td data-label="What happens">A pair of <code>'</code> marks wraps the words between them with no inner spaces</td><td data-label="In"><code>' awesome '</code></td><td data-label="Out"><code>'awesome'</code></td></tr>
+            <tr><td data-label="Rule">Articles</td><td data-label="What happens"><code>a</code> becomes <code>an</code> before a vowel or <i>h</i></td><td data-label="In"><code>a amazing rock</code></td><td data-label="Out"><code>an amazing rock</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="build">
+    <div class="wrap">
+      <h2 class="section__head">How it's built</h2>
+
+      <h3 class="sub">Processing pipeline</h3>
+      <ol class="pipeline">
+        <li>Check arguments<small>Exactly two file names</small></li>
+        <li>Read input file<small><code>os.ReadFile</code></small></li>
+        <li>Split into lines<small>Each line handled alone</small></li>
+        <li>Split into words<small><code>strings.Fields</code></small></li>
+        <li class="is-rule">Apply modifiers<small>hex, bin, up, low, cap</small></li>
+        <li class="is-rule">Fix articles<small>a to an</small></li>
+        <li class="is-rule">Fix punctuation<small>attach and group</small></li>
+        <li class="is-rule">Fix quotes<small>pair and attach</small></li>
+        <li>Join and write<small><code>os.WriteFile</code></small></li>
+      </ol>
+      <p class="pipeline-note">Steps 5 to 8 are the editing rules, run on every line in this fixed order.</p>
+
+      <h3 class="sub">Why the rules run in this order</h3>
+      <ul class="checks">
+        <li><strong>Modifiers first,</strong> because they remove instructions and change words, and every later rule must see the final words. In <code>a (up) apple</code>, the article rule only works once the text reads <code>A apple</code>.</li>
+        <li><strong>Articles before punctuation,</strong> so the rule matches a clean <code>a</code> rather than <code>a,</code> after punctuation is attached.</li>
+        <li><strong>Punctuation before quotes,</strong> so <code>raincoat . '</code> becomes <code>raincoat.</code> first and then <code>raincoat.'</code>, which is the correct result.</li>
+      </ul>
+
+      <h3 class="sub">Code structure</h3>
+      <p class="section-intro">One small function per rule, grouped into files by responsibility.</p>
+      <div class="table-wrap">
+        <table class="table table--stack">
+          <thead><tr><th scope="col">File</th><th scope="col">Responsibility</th></tr></thead>
+          <tbody>
+            <tr><td data-label="File"><code>main.go</code></td><td data-label="Responsibility">Entry point: checks arguments, reads the input file, writes the output file, reports errors</td></tr>
+            <tr><td data-label="File"><code>process.go</code></td><td data-label="Responsibility">Splits text into lines and runs the rules on each line in order</td></tr>
+            <tr><td data-label="File"><code>modifiers.go</code></td><td data-label="Responsibility">Recognises and applies <code>(hex)</code>, <code>(bin)</code>, <code>(up)</code>, <code>(low)</code>, <code>(cap)</code> and their counted forms</td></tr>
+            <tr><td data-label="File"><code>articles.go</code></td><td data-label="Responsibility">Changes <code>a</code> to <code>an</code></td></tr>
+            <tr><td data-label="File"><code>punctuation.go</code></td><td data-label="Responsibility">Attaches punctuation and keeps groups together</td></tr>
+            <tr><td data-label="File"><code>quotes.go</code></td><td data-label="Responsibility">Pairs quote marks and attaches them to the words inside</td></tr>
+            <tr><td data-label="File"><code>main_test.go</code></td><td data-label="Responsibility">Unit tests</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="decisions">
+    <div class="wrap">
+      <h2 class="section__head">Design decisions</h2>
+      <p class="section-intro">The brief did not cover every situation. Where it was silent, I chose behaviour that never loses the user's text and matches what a person would expect.</p>
+      <div class="table-wrap">
+        <table class="table table--stack">
+          <thead><tr><th scope="col">Situation</th><th scope="col">Behaviour</th><th scope="col">Reason</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Situation"><code>(up, 5)</code> with only two words before it</td><td data-label="Behaviour">Changes the two words that exist</td><td data-label="Reason">No crash; does as much as it can</td></tr>
+            <tr><td data-label="Situation"><code>(up, -1)</code> or <code>(foo)</code></td><td data-label="Behaviour">Left in the text unchanged</td><td data-label="Reason">Not a valid instruction, so the program does not guess</td></tr>
+            <tr><td data-label="Situation"><code>zz (hex)</code>, not a valid number</td><td data-label="Behaviour">Instruction removed, word kept as written</td><td data-label="Reason">The user's text is never destroyed</td></tr>
+            <tr><td data-label="Situation"><code>hello , world (up, 2)</code></td><td data-label="Behaviour"><code>HELLO, WORLD</code></td><td data-label="Reason">A lone comma is not counted as a word</td></tr>
+            <tr><td data-label="Situation"><code>don't</code></td><td data-label="Behaviour">Unchanged</td><td data-label="Reason">An apostrophe inside a word is not a quote mark</td></tr>
+            <tr><td data-label="Situation">Text over several lines</td><td data-label="Behaviour">Each line processed separately, line breaks kept</td><td data-label="Reason">An instruction on one line should not change words on another</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="testing">
+    <div class="wrap">
+      <h2 class="section__head">Testing and error handling</h2>
+      <div class="prose">
+        <p>
+          Unit tests in <code>main_test.go</code>, run with <code>go test</code>, check around
+          40 input and output cases: every example from the brief plus edge cases such as an
+          empty file, extra spaces, counts larger than the words available, invalid numbers,
+          mixed punctuation like <code>?!</code>, and two quoted phrases on one line. Code is
+          formatted with <code>gofmt</code> and checked with <code>go vet</code>.
+        </p>
+      </div>
+      <h3 class="sub">Errors are reported clearly, with exit code 1</h3>
+      <ul class="checks">
+        <li>Wrong number of arguments: prints <code>usage: go run . &lt;input file&gt; &lt;output file&gt;</code></li>
+        <li>Input file missing or unreadable: prints <code>cannot read input file</code> with the reason</li>
+        <li>Output file cannot be written: prints <code>cannot write output file</code> with the reason</li>
+        <li>Empty input produces an empty output file, and Windows line endings are handled</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="notes">
+    <div class="wrap">
+      <h2 class="section__head">Notes</h2>
+      <ul class="checks">
+        <li>Uses only Go's standard library: <code>os</code>, <code>strings</code>, <code>strconv</code>, <code>unicode</code>, <code>errors</code> and <code>fmt</code>.</li>
+        <li>Version control with Git, committing at each working milestone.</li>
+        <li>The source code is on 01&nbsp;Talent Academy's private Git server and can be shared on request.</li>
+      </ul>
+      <div class="case-next">
+        <a class="btn" href="/programming/#projects">All projects</a>
+        <a class="btn btn--quiet" href="mailto:mohamed.hani@mh-business.net?subject=go-reloaded">Ask about this project</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p>Mohamed Hani, Cairo</p>
+    <p><a href="mailto:mohamed.hani@mh-business.net">mohamed.hani@mh-business.net</a></p>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4f0756c437364f05b1e5e710a22f9daf"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
