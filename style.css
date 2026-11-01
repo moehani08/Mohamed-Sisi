@@ -1133,3 +1133,36 @@ html[dir="rtl"] .notes{
 
 .cols p a{ color:var(--brass); text-decoration:none; border-bottom:1px solid currentColor; font-family:var(--sans); font-size:.92rem; }
 .section__head + .projects > li:first-child .project{ border-top:0; padding-top:.4rem; }
+
+/* Programming page: before/after example and inline code */
+.project__body code,
+.project__example code{
+  font-family:ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size:.86em;
+}
+.project__body code{
+  padding:.05rem .3rem;
+  background:var(--paper);
+  border:1px solid var(--rule);
+}
+.project__example{
+  margin:0 0 1.1rem;
+  max-width:40rem;
+  border:1px solid var(--rule);
+  background:var(--paper);
+}
+.project__example p{
+  display:grid;
+  grid-template-columns:3rem minmax(0,1fr);
+  gap:.8rem;
+  margin:0;
+  padding:.7rem 1rem;
+  align-items:baseline;
+}
+.project__example p + p{ border-top:1px solid var(--rule); }
+.project__example span{
+  font-family:var(--sans);
+  font-size:.8rem;
+  color:var(--brass);
+}
+.project__example code{ color:var(--ink); overflow-wrap:anywhere; }
